@@ -9,7 +9,7 @@ define(function(require) {
   var Vue = require("vue");
   var Router = require("vue-router");
   var app = require("app");
-  var CurrentUser = require("js/app/apis/current");
+  var CurrentUser = require("js/app/apis/user/current");
   Vue.use(Router);
   var approuter = new Router({
     routes: [
@@ -25,7 +25,7 @@ define(function(require) {
       {
         path: "/login",
         name: "login",
-        component: vueloader("components/login"),
+        component: vueloader("components/pages/login"),
         meta: {
           anonymous: true
         }
@@ -33,7 +33,7 @@ define(function(require) {
       {
         path: "/logout",
         name: "logout",
-        component: vueloader("components/logout"),
+        component: vueloader("components/pages/logout"),
         meta: {
           anonymous: true
         }
@@ -42,7 +42,7 @@ define(function(require) {
       {
         path: "*",
         name: "notfound",
-        component: vueloader("components/notfound"),
+        component: vueloader("components/pages/notfound"),
         meta: {
           anonymous: true
         }

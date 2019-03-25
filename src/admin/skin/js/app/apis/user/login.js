@@ -1,0 +1,21 @@
+define(function(require) {
+  var app = require("app");
+  var $ = require("jquery");
+
+  return function(vm, cb) {
+    var url = app.Host + app.APIList.login;
+    $.post(
+      url,
+      JSON.stringify({ Username: vm.Username, Password: vm.Password })
+    )
+      .done(function(body) {
+        app.Vue.CurrentUser = body;
+        cb(body);
+      })
+      .fail(function(xhr) {
+        if (xhr.status === 422) {
+          vm.errors = xhr.responseJSON;
+        }
+      });
+  };
+});
