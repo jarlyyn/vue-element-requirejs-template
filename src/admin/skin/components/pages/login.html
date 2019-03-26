@@ -1,15 +1,16 @@
 <el-row type="flex" class="row-bg" justify="center">
   <el-col :span="6" style="min-width:250px">
+    <h1>登录</h1>
+    <div v-if="errors.length">
+      <el-alert
+        v-for="(msg, index) in errors"
+        v-bind:key="index"
+        v-bind:title="msg.Msg"
+        type="error"
+      >
+      </el-alert>
+    </div>
     <el-form v-on:submit.prevent="login">
-      <h1>登录</h1>
-      <div v-if="errors.length">
-        <el-alert
-          v-for="(msg, index) in errors"
-          v-bind:key="index"
-          v-bind:title="msg.Label+':'+msg.Msg"
-          type="error"
-        ></el-alert>
-      </div>
       <el-form-item>
         <el-input v-model="Username">
           <template slot="prepend"

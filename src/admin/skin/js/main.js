@@ -10,7 +10,8 @@ requirejs.config({
     ELEMENT: "js/libs/element/index",
     Cookies: "js/libs/js.cookie.min",
     tinymce: "js/libs/tinymce/tinymce.min",
-    Editor: "js/libs/tinymce-vue.min"
+    Editor: "js/libs/tinymce-vue.min",
+    parsers: "js/parsers/parsers"
   },
   shim: {
     Vue: { exports: "Vue" },
@@ -29,7 +30,8 @@ define(function(require) {
   var App = require("components/app");
   var ajaxinit = require("js/app/libs/ajaxinit");
   var filters = require("js/app/libs/filters");
-
+  ajaxinit();
+  filters();
   Element.install(Vue);
   var router = require("js/app/router");
   app.Vue = new Vue({

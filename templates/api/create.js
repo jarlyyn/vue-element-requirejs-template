@@ -3,14 +3,11 @@ define(function(require) {
   var $ = require("jquery");
   var parsers = require("parsers");
   return function(vm, cb) {
-    var url = app.Host + app.APIList.login;
-    $.post(
-      url,
-      JSON.stringify({ Username: vm.Username, Password: vm.Password })
-    )
+    var url = app.Host + app.APIList.url;
+    $.post(url, JSON.stringify(vm.form))
       .done(function(body) {
-        app.Vue.CurrentUser = body;
-        cb(body);
+        var data = parsers.parse200(body);
+        cb(data);
       })
       .fail(function(xhr) {
         if (xhr.status === 422) {

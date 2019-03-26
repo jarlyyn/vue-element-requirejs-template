@@ -16,7 +16,7 @@ define(function(require) {
       {
         path: "/",
         name: "console",
-        component: vueloader("components/console"),
+        component: vueloader("components/console/index"),
         meta: {
           anonymous: false
         }
