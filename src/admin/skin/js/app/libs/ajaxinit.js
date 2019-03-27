@@ -4,6 +4,14 @@ define(function(require) {
   var router = require("js/app/router");
   var Cookies = require("Cookies");
   return function() {
+    $(function() {
+      $(document).ajaxStart(function() {
+        app.Vue.Loading = true;
+      });
+      $(document).ajaxStop(function() {
+        app.Vue.Loading = false;
+      });
+    });
     var csrftoken = Cookies.get("herb-csrf-token");
     $.ajaxSetup({
       dataType: "json",

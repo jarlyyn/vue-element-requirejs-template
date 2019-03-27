@@ -31,10 +31,12 @@ define(function(require) {
     el: "#app",
     router: router,
     data: {
+      Loading: false,
       CurrentUser: null,
       Error: ""
     },
-    template: '<App :user="CurrentUser" :error="Error"/>',
+    template:
+      '<App     v-loading.fullscreen="Loading" :user="CurrentUser" :error="Error"/>',
     components: {
       App: App
     }

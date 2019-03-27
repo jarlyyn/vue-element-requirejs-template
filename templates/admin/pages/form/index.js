@@ -11,7 +11,10 @@ define(function(require) {
       this.load();
     },
     methods: {
-      load: function() {}
+      load: function() {},
+      onSubmit: function() {
+        this.errors = [];
+      }
     },
     data: function() {
       return {
