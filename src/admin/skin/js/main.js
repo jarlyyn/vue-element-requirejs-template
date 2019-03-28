@@ -39,10 +39,10 @@ define(function(require) {
     data: {
       Loading: false,
       CurrentUser: null,
-      Error: ""
+      Error: "",
+      Params: {}
     },
-    template:
-      '<App     v-loading.fullscreen="Loading" :user="CurrentUser" :error="Error"/>',
+    template: '<App :user="CurrentUser" :error="Error" :params="Params"/>',
     components: {
       App: App
     }

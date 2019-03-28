@@ -7,7 +7,7 @@ define(function(require) {
   return {
     name: "app",
     template: template,
-    props: ["user", "error"],
+    props: ["user", "error","params"],
     components: {
       Navmenu: Navmenu,
       Errorpage: Errorpage
