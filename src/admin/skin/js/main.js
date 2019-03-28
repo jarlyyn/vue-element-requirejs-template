@@ -8,24 +8,30 @@ requirejs.config({
     jquery: "js/libs/jquery-3.3.1.min",
     "vue-router": "js/libs/vue-router",
     Cookies: "js/libs/js.cookie.min",
+    tinymce: "js/libs/tinymce/tinymce.min",
+    Editor: "js/libs/tinymce-vue.min",
     parsers: "js/parsers/parsers"
   },
   shim: {
     Vue: { exports: "Vue" },
     jquery: { exports: "$" },
     Cookies: { exports: "Cookies" },
+    tinymce: { exports: "tinymce" },
+    Editor: { exports: "Editor" },
     app: { exports: "app" }
   }
 });
 
 define(function(require) {
   var Vue = require("vue");
+  var Element = require("ELEMENT");
   var app = require("app");
   var App = require("components/app");
   var ajaxinit = require("js/app/libs/ajaxinit");
   var filters = require("js/app/libs/filters");
   ajaxinit();
   filters();
+  Element.install(Vue);
   var router = require("js/app/router");
   app.Vue = new Vue({
     el: "#app",

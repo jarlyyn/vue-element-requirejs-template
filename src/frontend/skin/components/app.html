@@ -1,0 +1,9 @@
+<div id="app">
+  <div v-if="error==''">
+    <LayoutMain :params="params" :user="user" v-if="!$route.meta.layout"></LayoutMain>
+    <LayoutMain  :params="params" :user="user" v-if="$route.meta.layout=='main'"></LayoutMain>
+  </div>
+  <div v-else>
+    <Errorpage :error="error"></Errorpage>
+  </div>
+</div>

@@ -15,26 +15,10 @@ define(function(require) {
     routes: [
       {
         path: "/",
-        name: "console",
-        component: vueloader("components/console/index"),
+        name: "homepage",
+        component: vueloader("components/homepage/index"),
         meta: {
-          anonymous: false
-        }
-      },
-
-      {
-        path: "/login",
-        name: "login",
-        component: vueloader("components/pages/login"),
-        meta: {
-          anonymous: true
-        }
-      },
-      {
-        path: "/logout",
-        name: "logout",
-        component: vueloader("components/pages/logout"),
-        meta: {
+          layout: "main",
           anonymous: true
         }
       },
