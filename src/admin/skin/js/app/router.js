@@ -49,7 +49,7 @@ define(function(require) {
       }
     ]
   });
-  approuter.beforeEach((to, from, next) => {
+  approuter.beforeEach(function(to, from, next){
     app.RouterEntering = to.fullPath;
     if (app.Vue) {
       app.Vue.Error = "";

@@ -3,7 +3,7 @@ define(function(require) {
   var $ = require("jquery");
   var parsers = require("parsers");
   return function(cb) {
-    let url = app.Host + app.APIList.current;
+    var url = app.Host + app.APIList.current;
     $.ajax(url, {
       type: "GET"
     }).done(function(body) {
