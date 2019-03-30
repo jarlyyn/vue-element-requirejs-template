@@ -1,5 +1,6 @@
 requirejs.config({
   baseUrl: "skin/",
+  urlArgs: 'v=1',
   paths: {
     app: "js/app/app",
     vue: "js/libs/vue",

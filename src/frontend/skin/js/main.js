@@ -2,6 +2,7 @@ requirejs.config({
   baseUrl: "skin/",
   paths: {
     app: "js/app/app",
+    urlArgs: 'v=1',
     vue: "js/libs/vue",
     text: "js/libs/text",
     lodash: "js/libs/lodash.min",
