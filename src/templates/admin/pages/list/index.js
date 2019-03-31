@@ -45,6 +45,9 @@ define( function(require) {
             },
             onEdit:function(id){
               this.$router.push({name:'itemeditname',params:{id:id}})
+            },
+            onView:function(id){
+              this.$router.push({name:'itemviewname',params:{id:id}})
             }
         },
         template:require("text!./index.html"),
