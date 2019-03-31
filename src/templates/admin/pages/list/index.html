@@ -1,0 +1,33 @@
+<div>
+    <h1>page title</h1>
+    <el-row id="add" class="add">
+        <el-button id="add-button" @click="$router.push('/itemcreate')" type="primary">创建</el-button>
+      </el-row>
+      <el-table
+      :data="Items"
+      stripe
+      style="width: 100%">
+      <el-table-column
+        prop="ID"
+        label="ID">
+        </el-table-column>
+      <el-table-column
+      fixed="right"
+      label="操作"
+      width="100">
+      <template slot-scope="scope">
+        <el-button @click="onEdit(scope.row.ID)" type="text" size="small">编辑</el-button>
+        <el-button @click="handleDelete(scope.row)" type="text" size="small">删除</el-button>
+      </template>
+    </el-table-column>
+
+    </el-table>
+  <el-pagination
+    :page-size="10"
+    :pager-count="7"
+    :current-page.sync="CurrentPage"
+    @current-change="onPage"
+    layout="prev, pager, next"
+    :total="Count">
+  </el-pagination>  
+</div>
