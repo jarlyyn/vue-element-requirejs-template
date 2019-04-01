@@ -12,6 +12,7 @@ define(function(require) {
       .fail(function(xhr) {
         if (xhr.status === 422) {
           vm.errors = parsers.parse422(xhr.responseJSON);
+          cb()
         }
       });
   };
