@@ -7,6 +7,7 @@ requirejs.config({
     text: "js/libs/text",
     lodash: "js/libs/lodash.min",
     jquery: "js/libs/jquery-3.3.1.min",
+    ELEMENT: "js/libs/element/index",
     "vue-router": "js/libs/vue-router",
     Cookies: "js/libs/js.cookie.min",
     tinymce: "js/libs/tinymce/tinymce.min",
