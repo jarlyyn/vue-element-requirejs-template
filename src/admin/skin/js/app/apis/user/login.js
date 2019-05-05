@@ -9,7 +9,7 @@ define(function(require) {
       JSON.stringify({ Username: vm.Username, Password: vm.Password })
     )
       .done(function(body) {
-        app.Vue.CurrentUser = body;
+        app.Vue.CurrentUser = parsers.parse200(body);
         cb(body);
       })
       .fail(function(xhr) {
