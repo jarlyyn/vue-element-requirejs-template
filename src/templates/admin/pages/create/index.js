@@ -1,6 +1,6 @@
 define(function(require) {
-  var itemview=require("js/app/apis/itemview")
-  var itemupdate=require("js/app/apis/itemupdate")
+  var itemcreate=require("js/app/apis/itemcreate")
+
   return {
     name: "componentname",
     template: require("text!./index.html"),
@@ -13,16 +13,11 @@ define(function(require) {
       this.load();
     },
     methods: {
-      load: function() {
-        var self = this;
-        this.id=this.$route.params.id;
-        itemview(this,function(){
-        })
-      },
+      load: function() {},
       onSubmit: function() {
         var self=this;
         this.errors = [];
-        itemupdate(this,function(){
+        itemcreate(this,function(){
           if (self.errors.length==0){
             self.$router.push("successurl");
           }
@@ -31,8 +26,7 @@ define(function(require) {
     },
     data: function() {
       return {
-        id:"",
-        Item:{},
+        Item: {},
         errors: []
       };
     }
