@@ -3,6 +3,12 @@ define(function(require) {
     parse200: function(data) {
       return data.result;
     },
+    parseItems:function(data){
+      return data.result.datas;
+    },
+    parseItemsCount:function(data){
+      return data.result.count*1;
+    },    
     parse422: function(data) {
       var result = [];
       var errors = data.msg;

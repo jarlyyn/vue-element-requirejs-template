@@ -3,15 +3,17 @@ define(function(require) {
     var $ = require("jquery");
     var parsers = require("parsers");
     return function(vm, cb) {
-      var url = app.Host + app.APIList.url;
-      $.get(url, {page:vm.CurrentPage})
+      var url = app.Host + app.APIList.url + vm.id;
+      $.post(url, JSON.stringify(vm.Item))
         .done(function(body) {
           var data = parsers.parse200(body);
-          vm.Items=parsers.parseItems(body),
-          vm.Count=parsers.parseItemsCount(body),
           cb(data);
         })
-        .fail(function(xhr) {});
+        .fail(function(xhr) {
+          if (xhr.status === 422) {
+            vm.errors = parsers.parse422(xhr.responseJSON);
+          }
+        });
     };
   });
   
