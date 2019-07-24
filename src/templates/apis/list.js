@@ -7,8 +7,8 @@ define(function(require) {
       $.get(url, {page:vm.CurrentPage})
         .done(function(body) {
           var data = parsers.parse200(body);
-          vm.Items=parsers.parseItems(body),
-          vm.Count=parsers.parseItemsCount(body),
+          vm.Items=parsers.parseItems(body);
+          vm.Count=parsers.parseItemsCount(body);
           cb(data);
         })
         .fail(function(xhr) {});

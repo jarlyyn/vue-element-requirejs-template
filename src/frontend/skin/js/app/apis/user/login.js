@@ -9,7 +9,6 @@ define(function(require) {
       JSON.stringify({ Username: vm.Username, Password: vm.Password })
     )
       .done(function(body) {
-        app.Vue.CurrentUser = body;
         cb(body);
       })
       .fail(function(xhr) {
