@@ -61,6 +61,36 @@ define(function(require) {
     }
     next();
   });
+  approuter.beforeEach(function(to, from, next) {
+    app.RouterEntering = to.fullPath;
+    if (app.Vue) {
+      app.Vue.Error = "";
+    }
+    if (
+      to.meta.anonymous === undefined ||
+      to.meta.anonymous === null ||
+      to.meta.anonymous === false
+    ) {
+      if (
+        approuter.app.CurrentUser === null ||
+        approuter.app.CurrentUser === undefined
+      ) {
+        next(false);
+        CurrentUser(function() {
+          if (
+            approuter.app.CurrentUser === null ||
+            approuter.app.CurrentUser === undefined
+          ) {
+            approuter.push("/login");
+          } else {
+            approuter.push(to.fullPath);
+          }
+        });
+        return;
+      }
+    }
+    next();
+  });
 
   return approuter;
 });

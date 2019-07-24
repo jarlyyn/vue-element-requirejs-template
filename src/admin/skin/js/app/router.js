@@ -49,7 +49,7 @@ define(function(require) {
       }
     ]
   });
-  approuter.beforeEach(function(to, from, next){
+  approuter.beforeEach(function(to, from, next) {
     app.RouterEntering = to.fullPath;
     if (app.Vue) {
       app.Vue.Error = "";
@@ -63,16 +63,18 @@ define(function(require) {
         approuter.app.CurrentUser === null ||
         approuter.app.CurrentUser === undefined
       ) {
-        return CurrentUser(function() {
+        next(false);
+        CurrentUser(function() {
           if (
             approuter.app.CurrentUser === null ||
             approuter.app.CurrentUser === undefined
           ) {
-            next("/login/");
-            return;
+            approuter.push("/login");
+          } else {
+            approuter.push(to.fullPath);
           }
-          next();
         });
+        return;
       }
     }
     next();
