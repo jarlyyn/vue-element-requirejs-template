@@ -6,6 +6,7 @@
       <el-table
       :data="Items"
       stripe
+      @sort-change="onSort"
       style="width: 100%">
       <el-table-column
         prop="ID"
