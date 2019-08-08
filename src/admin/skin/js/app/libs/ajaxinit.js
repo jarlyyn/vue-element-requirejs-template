@@ -26,6 +26,9 @@ define(function(require) {
           localStorage.setItem("returnurl", JSON.stringify(app.RouterEntering));
           router.push("/login");
         },
+        403: function() {
+          app.Vue.Error = "403";
+        },
         404: function() {
           app.Vue.Error = "404";
         },
