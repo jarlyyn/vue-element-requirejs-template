@@ -47,34 +47,6 @@ define(function(require) {
         approuter.app.CurrentUser === null ||
         approuter.app.CurrentUser === undefined
       ) {
-        return CurrentUser(function() {
-          if (
-            approuter.app.CurrentUser === null ||
-            approuter.app.CurrentUser === undefined
-          ) {
-            next("/login/");
-            return;
-          }
-          next();
-        });
-      }
-    }
-    next();
-  });
-  approuter.beforeEach(function(to, from, next) {
-    app.RouterEntering = to.fullPath;
-    if (app.Vue) {
-      app.Vue.Error = "";
-    }
-    if (
-      to.meta.anonymous === undefined ||
-      to.meta.anonymous === null ||
-      to.meta.anonymous === false
-    ) {
-      if (
-        approuter.app.CurrentUser === null ||
-        approuter.app.CurrentUser === undefined
-      ) {
         next(false);
         CurrentUser(function() {
           if (
