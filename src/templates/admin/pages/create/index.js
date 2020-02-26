@@ -1,6 +1,6 @@
 define(function(require) {
   var itemcreate=require("js/app/apis/itemcreate")
-
+  var successurl="successurl"
   return {
     name: "componentname",
     template: require("text!./index.html"),
@@ -17,16 +17,24 @@ define(function(require) {
       onSubmit: function() {
         var self=this;
         this.errors = [];
-        itemcreate(this,function(){
+        self.$refs["form"].validate(function(valid){
+        if (valid){
+          itemcreate(this,function(){
           if (self.errors.length==0){
-            self.$router.push("successurl");
+            self.$router.push(successurl);
           }
+          })
+        }else{
+          return false
+        }
         })
       }
     },
     data: function() {
       return {
         Item: {},
+        rules:{
+        },
         errors: []
       };
     }

@@ -1,6 +1,7 @@
 define(function(require) {
   var itemview=require("js/app/apis/itemview")
   var itemupdate=require("js/app/apis/itemupdate")
+  var successurl="successurl"
   return {
     name: "componentname",
     template: require("text!./index.html"),
@@ -22,17 +23,25 @@ define(function(require) {
       onSubmit: function() {
         var self=this;
         this.errors = [];
-        itemupdate(this,function(){
-          if (self.errors.length==0){
-            self.$router.push("successurl");
+        self.$refs["form"].validate(function(valid){
+          if (valid){
+            itemupdate(this,function(){
+            if (self.errors.length==0){
+              self.$router.push(successurl);
+            }
+            })
+          }else{
+            return false
           }
-        })
-      }
-    },
+          })
+        }
+      },
     data: function() {
       return {
         id:"",
         Item:{},
+        rules:{
+        },
         errors: []
       };
     }

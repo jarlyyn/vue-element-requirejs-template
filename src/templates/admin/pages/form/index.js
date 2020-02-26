@@ -14,11 +14,21 @@ define(function(require) {
       load: function() {},
       onSubmit: function() {
         this.errors = [];
+        var self=this
+        self.$refs["form"].validate(function(valid){
+          if (valid){
+
+          }else{
+            return false
+          }
+          })  
       }
     },
     data: function() {
       return {
         form: {},
+        rules:{
+        },
         errors: []
       };
     }
