@@ -25,7 +25,7 @@ define(function(require) {
         this.errors = [];
         self.$refs["form"].validate(function(valid){
           if (valid){
-            itemupdate(this,function(){
+            itemupdate(self,function(){
             if (self.errors.length==0){
               self.$router.push(successurl);
             }
